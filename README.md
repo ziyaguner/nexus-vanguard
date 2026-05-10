@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <img src="banner.png" alt="Nexus Vanguard Banner" width="100%">
 
@@ -268,10 +268,12 @@ Push --> [1] Python Lint (flake8)
 ## Yasal Uyari
 
 > [!CAUTION]
-> Bu arac yalnizca **yetkili guvenlik testleri ve egitim amacli** kullanim icin tasarlanmistir.
-> Yalnizca kendi sahibi oldugunuz veya yazili izin aldiginiz sistemleri tarayin.
-> Yetkisiz port taramasi yasandiginiz ulkede yasal suctur.
-> Yazarlar, aracin kotye kullanimi nedeniyle sorumluluk kabul etmez.
+> **Bu arac yalnizca egitim ve etik guvenliktestleri amaclidir.**
+>
+> - Yalnizca **kendi sisteminizi** veya **yazili izin aldiginiz** ag ve cihazlari tarayabilirsiniz.
+> - Yetkisiz port taramasi, **Turk Ceza Kanunu** ve pek cok ulkenin bilisim mevzuati kapsaminda **suctur**.
+> - Bu yazilimi kullananlar, tum hukuki sorumlulugu **tamamen kendileri kabul etmis** sayilir.
+> - Gelistiriciler, yazilimin amac disi veya yetkisiz kullanimindan doğan hicbir zarardan sorumlu tutulamaz.
 
 ---
 
