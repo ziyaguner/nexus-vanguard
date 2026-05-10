@@ -1,18 +1,29 @@
-﻿<div align="center">
+<div align="center">
 
-# NEXUS VANGUARD
+<img src="banner.png" alt="Nexus Vanguard Banner" width="100%">
 
-### Gercek Zamanli Ag Guvenligi Tarayicisi - Kurumsal Surum V7.0
+<br><br>
 
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
-[![WebSocket](https://img.shields.io/badge/WebSocket-SocketIO-010101?style=for-the-badge&logo=socket.io&logoColor=white)](https://socket.io)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
-[![SQLite](https://img.shields.io/badge/SQLite-Veritabani-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org)
-[![Lisans](https://img.shields.io/badge/Lisans-MIT-green?style=for-the-badge)](LICENSE)
-[![CI/CD](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0-ffffff?style=flat-square&logo=flask&logoColor=black)](https://flask.palletsprojects.com)
+[![SocketIO](https://img.shields.io/badge/Socket.IO-WebSocket-010101?style=flat-square&logo=socket.io&logoColor=white)](https://socket.io)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+[![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org)
+[![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
+[![CI](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/ziyaguner/nexus-vanguard/actions)
 
-> **Gercek zamanli WebSocket akisi, otomatik CVE tespiti, etkilesimli topoloji haritasi ve kalici tarama gecmisi ile kurumsal duzey, tam kapsamli bir ag guvenligi platformu.**
+<br>
+
+![Ports](https://img.shields.io/badge/Port_Tarama-1--65535-00ff88?style=flat-square&labelColor=0a1628)
+![CVE](https://img.shields.io/badge/CVE_Veritabani-25_Imza-ff3c5a?style=flat-square&labelColor=0a1628)
+![Threads](https://img.shields.io/badge/Max_Thread-100-00b4ff?style=flat-square&labelColor=0a1628)
+![Version](https://img.shields.io/badge/Surum-V7.0_Enterprise-a855f7?style=flat-square&labelColor=0a1628)
+
+<br>
+
+> **Gercek zamanli WebSocket akisi · 25 CVE imzasi · Canvas topoloji haritasi · Kalici tarama gecmisi · PDF rapor · Docker hazir**
+
+<br>
 
 </div>
 
