@@ -76,6 +76,18 @@
 
 ---
 
+## Ekran Goruntuleri
+
+<div align="center">
+
+| Giris Ekrani | Dashboard |
+|:---:|:---:|
+| ![Login](assets/screenshot_login.png) | ![Dashboard](assets/screenshot_dashboard.png) |
+
+</div>
+
+---
+
 ## Hizli Baslangic
 
 ### Python ile (Gelistirme)
