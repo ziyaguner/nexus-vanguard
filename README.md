@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <img src="banner.png" alt="Nexus Vanguard Banner" width="100%">
 
@@ -10,7 +10,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
 [![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
-[![CI](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/ziyaguner/nexus-vanguard/actions)
+[![CI](https://img.shields.io/badge/CI%2FCD-Passing-22c55e?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/ziyaguner/nexus-vanguard/actions)
 
 <br>
 
@@ -21,7 +21,7 @@
 
 <br>
 
-> **Gercek zamanli WebSocket akisi · 25 CVE imzasi · Canvas topoloji haritasi · Kalici tarama gecmisi · PDF rapor · Docker hazir**
+> **Gercek zamanli WebSocket akisi &nbsp;·&nbsp; 25 CVE imzasi &nbsp;·&nbsp; Canvas topoloji haritasi &nbsp;·&nbsp; Kalici tarama gecmisi &nbsp;·&nbsp; PDF rapor &nbsp;·&nbsp; Docker hazir**
 
 <br>
 
@@ -31,228 +31,256 @@
 
 ## Ozellikler
 
-| Ozellik | Aciklama |
-|---|---|
-| **Gercek Zamanli WebSocket** | Her acik port, sayfa yenilenmeden aninda Socket.IO ile arayuze iletilir |
-| **Guvenli Kimlik Dogrulama** | Flask-Login ile korunan giris ekrani - yetkisiz erisim tamamen engellenir |
-| **Otomatik CVE Tespiti** | 25+ bilinen zafiyetli surum imzasi canli banner verisiyle eslestirilerek analiz edilir |
-| **Etkilesimli Topoloji Haritasi** | Merkez hedef dugumu ve uydu port dugumlerindan olusan canli Canvas ag grafigi |
-| **Kalici Tarama Gecmisi** | Her tamamlanan tarama SQLAlchemy ile SQLite'a kaydedilir, gecmis panelinden goruntulenir |
-| **Terminal Konsolu** | Sag altta acilip kapanan, gercek zamanli log akisi gosteren hacker tarzinda terminal |
-| **PDF Rapor Disa Aktarma** | jsPDF ve autoTable ile tek tikta kurumsal rapor indirme |
-| **Siber Guvenlik Arayuzu** | Neon vurgulu karanlik tema, CRITICAL nabiz animasyonu, canli ilerleme cubugu |
-| **Docker Destegi** | Windows, Linux ve macOS'ta tek komutla calistirma, kalici volume destegiyle |
-| **CI/CD Pipeline** | GitHub Actions: flake8 kod denetimi, black format kontrolu, Docker build dogrulamasi |
+<table>
+<tr>
+<td width="50%">
+
+### Gercek Zamanli Tarama
+- **WebSocket akisi** — Her acik port sayfa yenilenmeden aninda gelir
+- **100 eszamanli thread** — Yuksek hizli port tarama motoru
+- **Banner yakalama** — Servis versiyonu otomatik tespit edilir
+- **5 hazir profil** — Std / Full / Known / Web / DB
+
+</td>
+<td width="50%">
+
+### Guvenlik & Analiz
+- **25 CVE imzasi** — Heartbleed, EternalRed, Ghostcat ve daha fazlasi
+- **Otomatik risk siniflandirmasi** — CRITICAL / HIGH / MEDIUM / LOW
+- **Flask-Login kimlik dogrulama** — Yetkisiz erisim tamamen engellenir
+- **SQLite gecmis** — Her tarama kalici olarak kaydedilir
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Arayuz
+- **Canvas topoloji haritasi** — Canli ag grafigi
+- **Hacker terminali** — Gercek zamanli log konsolu
+- **CRITICAL nabiz animasyonu** — Yuksek riskli portlar kirmizi yanar
+- **PDF rapor** — Tek tikla kurumsal rapor indir
+
+</td>
+<td width="50%">
+
+### DevOps
+- **Docker & Compose** — Tek komutla ayaga kalkar
+- **Kalici volume** — Veritabani konteyner silinse de korunur
+- **GitHub Actions CI/CD** — Her push'ta otomatik test & build
+- **REST API** — `/api/history` ile tarama gecmisi JSON
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## Hizli Baslangic
 
-### Yontem 1 - Python ile (Gelistirme icin onerilir)
+### Python ile (Gelistirme)
 
-`ash
-# 1. Depoyu klonla
-git clone https://github.com/kullanici-adin/nexus-vanguard.git
+```bash
+git clone https://github.com/ziyaguner/nexus-vanguard.git
 cd nexus-vanguard
-
-# 2. Bagimliliklari yukle
 pip install -r requirements.txt
-
-# 3. Calistir
 python app.py
-`
+```
 
-Tarayici otomatik acilir -> **http://127.0.0.1:5001**
+> Uygulama otomatik baslar: **http://127.0.0.1:5001**
 
-### Yontem 2 - Docker ile (Uretim icin onerilir)
+### Docker ile (Uretim)
 
-`ash
-# Derle ve baslat
-docker-compose up -d
-
-# Loglari izle
-docker-compose logs -f
-
-# Durdur
-docker-compose down
-`
-
-Tarayicide ac -> **http://localhost:5001**
+```bash
+docker-compose up -d        # Baslat
+docker-compose logs -f      # Loglari izle
+docker-compose down         # Durdur
+```
 
 ---
 
-## Varsayilan Giris Bilgileri
+## Giris Bilgileri
+
+> [!WARNING]
+> Asagidaki varsayilan bilgileri halka acik bir sunucuya deploy etmeden once `app.py` icinde degistirin.
 
 | Alan | Deger |
-|---|---|
-| Kullanici Adi | dmin |
-| Sifre | 
-exus2026 |
-
-> Halka acik bir sunucuya deploy etmeden once pp.py icindeki ADMIN_PASS degerini degistirin.
+|:---:|:---:|
+| Kullanici Adi | `admin` |
+| Sifre | `nexus2026` |
 
 ---
 
 ## Nasil Kullanilir?
 
-1. Yukaridaki bilgilerle **giris yapin**
-2. Hedef bir **IP adresi** girin (ornegin 192.168.1.1 veya 127.0.0.1)
-3. Port araligini ayarlayin ya da hazir bir profil secin:
+> [!TIP]
+> Kendi sisteminizi taramak icin `127.0.0.1` girin. Ag cihazlari icin yerel IP adresini kullanin.
 
-| Profil | Aralik | Kullanim Amaci |
-|---|---|---|
-| Std | 1 - 1024 | Yaygin servisler |
-| Full | 1 - 65535 | Tam tarama |
-| Known | 1 - 1023 | IANA bilinen portlar |
-| Web | 8000 - 9999 | Web uygulamalari ve API'lar |
-| DB | 3306 - 3399 | Veritabani sunuculari |
+**1.** Giris yapin &nbsp;**2.** Hedef IP girin &nbsp;**3.** Profil secin &nbsp;**4.** Taramayi baslatın
 
-4. **TARAMAYI BASLAT** butonuna basin - sonuclar tabloda aninda gorunur
-5. **CRITICAL** riskli satirlar kirmizi nabiz efektiyle yanar (CVE tespit edildi)
-6. **Gecmis** butonuyla tum eski taramalari goruntuleyin
-7. Tarama bittikten sonra **PDF Indir** ile kurumsal rapor alin
-8. Sag alttaki **TERMINAL KONSOLU** ile canli log akisini izleyin
+| Profil | Port Araligi | Kullanim Amaci |
+|:---:|:---:|:---|
+| `Std` | 1 - 1024 | Yaygin servisler (HTTP, SSH, FTP...) |
+| `Full` | 1 - 65535 | Tam tarama |
+| `Known` | 1 - 1023 | IANA bilinen portlar |
+| `Web` | 8000 - 9999 | Web uygulamalari ve API'lar |
+| `DB` | 3306 - 3399 | Veritabani sunuculari |
 
 ---
 
-## Yerlesik CVE Veritabani (25 Imza)
+## CVE Veritabani
+
+<details>
+<summary><b>25 CVE imzasini gormek icin tiklayin</b></summary>
+
+<br>
 
 | CVE | Servis | Ciddiyet | Aciklama |
-|---|---|---|---|
-| CVE-2014-0160 | OpenSSL 1.0.1 | KRITIK | Heartbleed - ozel anahtar bellek sizintisi |
-| CVE-2021-41773 | Apache 2.4.49 | KRITIK | Dizin gecisi ve Uzaktan Kod Calistirma (RCE) |
-| CVE-2021-42013 | Apache 2.4.50 | KRITIK | CVE-2021-41773 yamasi icin RCE atlatma |
-| CVE-2017-7494 | Samba 3.5 | KRITIK | EternalRed - rastgele kutuphane yukleme RCE |
-| CVE-2011-2523 | vsftpd 2.3.4 | KRITIK | Arka kapi komutu calistirma |
-| CVE-2020-1938 | Tomcat 9.0.0 | KRITIK | Ghostcat - AJP rastgele dosya okuma |
-| CVE-2019-15846 | Exim 4.87 | KRITIK | TLS SNI uzerinden heap tasmasi RCE |
-| CVE-2019-10149 | Exim 4.92 | KRITIK | MAIL FROM uzerinden uzaktan komut calistirma |
-| CVE-2017-7269 | IIS 6.0 | KRITIK | WebDAV buffer overflow RCE |
-| CVE-2020-7247 | OpenSMTPD 6.6 | KRITIK | Root olarak yerel/uzaktan RCE |
-| CVE-2018-7600 | Drupal 7 | KRITIK | Drupalgeddon2 - kimlik dogrulamasiz RCE |
-| CVE-2022-0543 | Redis 4.0 | KRITIK | Lua sandbox kacisi RCE |
-| CVE-2017-12617 | Tomcat 7.0 | KRITIK | JSP yukleme atlatmasi RCE |
-| CVE-2019-11043 | PHP 5.6 | KRITIK | FPM yolu alt tasma RCE |
-| CVE-2010-4221 | ProFTPD 1.3.3 | KRITIK | Telnet IAC heap tasmasi |
-| CVE-2015-3306 | ProFTPD 1.3.5 | KRITIK | SITE CPFR ile rastgele dosya kopyalama |
-| CVE-2016-6515 | OpenSSH 7.2 | YUKSEK | Sinir tanimayan kimlik dogrulama dongusuyle DoS |
-| CVE-2018-15473 | OpenSSH 7.7 | ORTA | Zamanlama farki ile kullanici adi tespiti |
-| CVE-2016-2107 | OpenSSL 1.0.2 | YUKSEK | Dolgu oracle MITM saldirisi |
-| CVE-2021-23017 | nginx 1.16.1 | YUKSEK | DNS cozumleyicide off-by-one heap tasmasi |
+|---|---|:---:|---|
+| CVE-2014-0160 | OpenSSL 1.0.1 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Heartbleed - ozel anahtar bellek sizintisi |
+| CVE-2021-41773 | Apache 2.4.49 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Dizin gecisi ve Uzaktan Kod Calistirma |
+| CVE-2021-42013 | Apache 2.4.50 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | CVE-2021-41773 yamasi icin RCE atlatma |
+| CVE-2017-7494 | Samba 3.5 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | EternalRed - rastgele kutuphane yukleme |
+| CVE-2011-2523 | vsftpd 2.3.4 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Arka kapi komutu calistirma |
+| CVE-2020-1938 | Tomcat 9.0.0 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Ghostcat - AJP rastgele dosya okuma |
+| CVE-2019-15846 | Exim 4.87 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | TLS SNI uzerinden heap tasmasi RCE |
+| CVE-2019-10149 | Exim 4.92 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | MAIL FROM uzerinden uzaktan komut |
+| CVE-2017-7269 | IIS 6.0 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | WebDAV buffer overflow RCE |
+| CVE-2020-7247 | OpenSMTPD 6.6 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Root olarak yerel/uzaktan RCE |
+| CVE-2018-7600 | Drupal 7 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Drupalgeddon2 kimlik dogrulamasiz RCE |
+| CVE-2022-0543 | Redis 4.0 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Lua sandbox kacisi RCE |
+| CVE-2017-12617 | Tomcat 7.0 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | JSP yukleme atlatmasi RCE |
+| CVE-2019-11043 | PHP 5.6 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | FPM yolu alt tasma RCE |
+| CVE-2010-4221 | ProFTPD 1.3.3 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Telnet IAC heap tasmasi |
+| CVE-2015-3306 | ProFTPD 1.3.5 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | SITE CPFR ile rastgele dosya kopyalama |
+| CVE-2016-6515 | OpenSSH 7.2 | ![](https://img.shields.io/badge/YUKSEK-f97316?style=flat-square) | Sinir tanimayan kimlik dogrulama DoS |
+| CVE-2018-15473 | OpenSSH 7.7 | ![](https://img.shields.io/badge/ORTA-facc15?style=flat-square) | Zamanlama farki ile kullanici adi tespiti |
+| CVE-2016-2107 | OpenSSL 1.0.2 | ![](https://img.shields.io/badge/YUKSEK-f97316?style=flat-square) | Dolgu oracle MITM saldirisi |
+| CVE-2021-23017 | nginx 1.16.1 | ![](https://img.shields.io/badge/YUKSEK-f97316?style=flat-square) | DNS cozumleyicide off-by-one heap tasmasi |
+| CVE-2014-6271 | bash 4.3 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Shellshock - ortam degiskeni RCE |
+| CVE-2017-0144 | SMB v1 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | EternalBlue - WannaCry RCE |
+| CVE-2021-44228 | Log4j 2.x | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | Log4Shell - JNDI injection RCE |
+| CVE-2020-0796 | SMBv3 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | SMBGhost - istemci/sunucu RCE |
+| CVE-2019-0708 | RDP 3389 | ![](https://img.shields.io/badge/KRITIK-ff3c5a?style=flat-square) | BlueKeep - kimlik dogrulamasiz RCE |
 
-*...ve 5 imza daha yerlesik olarak mevcuttur.*
+</details>
 
 ---
 
 ## Mimari
 
-`
+```
 Tarayici (Socket.IO Istemcisi)
-  Giris -> Panel -> Tablo + Canvas + Terminal + PDF Disa Aktarma
-         |
-         |  WebSocket (cift yonlu, gercek zamanli)
-         v
-Flask-SocketIO Sunucusu (app.py)
-  Flask-Login Kimlik Dogrulama | REST /api/history | WebSocket Olaylari
-         |
-         |  Python geri cagrima fonksiyonlari (on_port, on_progress, on_done)
-         v
-Tarama Motoru (scanner.py)
-  ThreadPoolExecutor (maks. 100 is parcacigi) | Banner Yakalama
-  CVE Guvenlik Acigi Analizi (VULN_DB, 25 imza)
-         |
-         |  SQLAlchemy ORM
-         v
-Veritabani Katmani (database.py)
-  ScanRecord + PortRecord | SQLite (Docker kalici volume)
-`
+  Giris Ekrani --> Cyberpunk Dashboard
+       |               |-- Port Tablosu (canli)
+       |               |-- Canvas Topoloji Haritasi
+       |               |-- Hacker Terminal Konsolu
+       |               `-- PDF Rapor / Gecmis Modali
+       |
+       | WebSocket (cift yonlu, gercek zamanli)
+       v
+Flask-SocketIO Sunucusu [app.py]
+  Flask-Login Auth  |  REST /api/history  |  WS Events
+       |
+       | Python geri cagirma (on_port, on_progress, on_done)
+       v
+Tarama Motoru [scanner.py]
+  ThreadPoolExecutor (max 100)  |  Banner Yakalama
+  CVE Analizi (VULN_DB, 25 imza)
+       |
+       | SQLAlchemy ORM
+       v
+Veritabani [database.py]
+  ScanRecord + PortRecord --> SQLite (Docker kalici volume)
+```
 
 ---
 
 ## Proje Yapisi
 
-`
+```
 nexus-vanguard/
-|-- app.py                        # Flask-SocketIO sunucusu, kimlik dogrulama, REST API
-|-- scanner.py                    # Tarama motoru, CVE veritabani, banner yakalama
-|-- database.py                   # SQLAlchemy modelleri ve CRUD islemleri
-|-- requirements.txt              # Python bagimliliklari
-|-- Dockerfile                    # Konteyner imaji tanimi
-|-- docker-compose.yml            # Orkestrasyon + kalici volume
-|-- templates/
-|   |-- index.html                # Tam kapsamli siber guvenlik paneli
-|   -- login.html                # Guvenli giris sayfasi
--- .github/
-    -- workflows/
-        -- docker-build.yml      # CI/CD pipeline
-`
+├── app.py                   # Sunucu, kimlik dogrulama, REST API
+├── scanner.py               # Tarama motoru + CVE veritabani
+├── database.py              # SQLAlchemy modelleri
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── banner.png
+├── templates/
+│   ├── index.html           # Cyberpunk dashboard
+│   └── login.html           # Giris ekrani
+└── .github/workflows/
+    └── docker-build.yml     # CI/CD pipeline
+```
 
 ---
 
 ## Teknoloji Yigini
 
+<div align="center">
+
 | Katman | Teknoloji |
-|---|---|
-| Backend | Python 3.12, Flask 3.0, Flask-SocketIO |
-| Kimlik Dogrulama | Flask-Login (oturum tabanli) |
-| Veritabani | SQLAlchemy + SQLite |
-| Gercek Zamanli Iletisim | Socket.IO (WebSocket + uzun yoklama yedegi) |
-| Frontend | Vanilla HTML5, CSS3, JavaScript ES6+ |
-| Gorsellestirme | HTML5 Canvas (ozel topoloji grafigi) |
-| PDF Olusturma | jsPDF + jsPDF-AutoTable |
-| Konteynerlestirme | Docker, Docker Compose |
-| CI/CD | GitHub Actions (flake8, black, Docker build) |
+|:---:|:---:|
+| Backend | `Python 3.12` `Flask 3.0` `Flask-SocketIO` |
+| Kimlik Dogrulama | `Flask-Login` |
+| Veritabani | `SQLAlchemy` `SQLite` |
+| Gercek Zamanli | `Socket.IO` WebSocket |
+| Frontend | `HTML5` `CSS3` `JavaScript ES6+` |
+| Gorsellestirme | `HTML5 Canvas` |
+| PDF | `jsPDF` `autoTable` |
+| Konteyner | `Docker` `Docker Compose` |
+| CI/CD | `GitHub Actions` |
+
+</div>
 
 ---
 
 ## Yapilandirma
 
-pp.py icindeki temel ayarlar:
+```python
+# app.py
+ADMIN_USER = "admin"       # Kullanici adi
+ADMIN_PASS = "nexus2026"   # Sifre - deploy oncesi degistirin!
+PORT       = 5001          # Sunucu portu
+```
 
-`python
-ADMIN_USER = "admin"       # Giris kullanici adi
-ADMIN_PASS = "nexus2026"   # Giris sifresi - Deploy oncesi mutlaka degistirin!
-PORT       = 5001          # Web sunucusu portu
-`
-
-scanner.py icindeki temel ayarlar:
-
-`python
+```python
+# scanner.py
 TIMEOUT = 0.5    # Port basina soket zaman asimi (saniye)
-# Is parcacigi sayisi scan_range() icinde maks. 100 ile sinirlandirilmistir
-`
+# Max thread sayisi: 100
+```
 
 ---
 
 ## CI/CD Pipeline
 
-main veya master branch'ine her push'ta:
+> [!NOTE]
+> Her `main` branch push'unda asagidaki adimlar otomatik calisir.
 
-1. **Python Kod Denetimi** - flake8 ile sozdizimi ve stil hatasi kontrolu (maks. satir uzunlugu: 120)
-2. **Format Kontrolu** - black ile tutarli kod formati dogrulamasi
-3. **Docker Build** - Imaj derlenir, konteynerin saglikli basladigi dogrulanir
+```
+Push --> [1] Python Lint (flake8)
+     --> [2] Docker Build + Container Test
+```
 
 ---
 
 ## Yasal Uyari
 
-> Bu arac yalnizca **yetkili guvenlik testleri ve egitim amacli kullanim** icin tasarlanmistir.
-> Yalnizca kendi sahibi oldugunuz veya yazili izin aldiginiz ag ve sistemleri tarayin.
+> [!CAUTION]
+> Bu arac yalnizca **yetkili guvenlik testleri ve egitim amacli** kullanim icin tasarlanmistir.
+> Yalnizca kendi sahibi oldugunuz veya yazili izin aldiginiz sistemleri tarayin.
 > Yetkisiz port taramasi yasandiginiz ulkede yasal suctur.
-> Yazarlar, aracin kotye kullanimi nedeniyle hicbir sorumluluk kabul etmez.
-
----
-
-## Lisans
-
-MIT Lisansi - (c) 2026 Nexus Vanguard Systems
+> Yazarlar, aracin kotye kullanimi nedeniyle sorumluluk kabul etmez.
 
 ---
 
 <div align="center">
 
-Guvenlik toplulugu icin tutkuyla gelistirildi.
+**Guvenlik toplulugu icin tutkuyla gelistirildi**
 
-*Projeyi faydali bulduysaniz yildiz vermeyi unutmayin!*
+Projeyi faydali bulduysaniz yildiz vermeyi unutmayin!
+
+[![Star](https://img.shields.io/github/stars/ziyaguner/nexus-vanguard?style=social)](https://github.com/ziyaguner/nexus-vanguard)
 
 </div>
