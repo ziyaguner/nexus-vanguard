@@ -1,0 +1,39 @@
+name: Nexus Vanguard CI/CD
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint:
+    name: Python Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install lint tools
+        run: pip install flake8 black
+      - name: Run flake8
+        run: flake8 . --max-line-length=120 --exclude=.git,__pycache__,migrations
+      - name: Check black formatting
+        run: black --check . --line-length=120
+
+  docker-build:
+    name: Docker Build
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build Docker image
+        run: docker build -t nexus-vanguard:${{ github.sha }} .
+      - name: Verify container starts
+        run: |
+          docker run -d --name nv_test -p 5001:5001 nexus-vanguard:${{ github.sha }}
+          sleep 5
+          curl -f http://localhost:5001/login || exit 1
+          docker stop nv_test

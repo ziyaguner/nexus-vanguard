@@ -1,0 +1,4 @@
+port,status,service,banner
+80,OPEN,HTTP,HTTP/1.1 404 Not Found
+135,OPEN,MSRPC,—
+445,OPEN,SMB / Microsoft-DS,—

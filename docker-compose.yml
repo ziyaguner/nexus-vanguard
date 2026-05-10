@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  nexus-vanguard:
+    build: .
+    container_name: nexus_vanguard_v7
+    ports:
+      - "5001:5001"
+    volumes:
+      - nv_db:/app/instance
+    restart: unless-stopped
+
+volumes:
+  nv_db:
+    driver: local

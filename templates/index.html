@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus Vanguard V7.0 Enterprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#020c14;--bg2:#051a2b;--bg3:#071e33;--green:#00ff88;--red:#ff3c5a;--orange:#ff8c42;--yellow:#ffd166;--blue:#00b4ff;--purple:#a855f7;--b1:rgba(0,255,136,.15);--b2:rgba(0,180,255,.18);--tx:#c4e0f0;--tx2:#5a8099}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;overflow:hidden}
+body{background:radial-gradient(ellipse 60% 50% at 10% 0%,rgba(0,180,255,.07),transparent),radial-gradient(ellipse 50% 40% at 90% 100%,rgba(0,255,136,.06),transparent),var(--bg)}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,136,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+header{display:flex;align-items:center;gap:12px;padding:10px 24px;border-bottom:1px solid var(--b1);background:rgba(5,20,35,.9);backdrop-filter:blur(14px);position:relative;z-index:10}
+.logo{font-family:'Orbitron',monospace;font-weight:900;font-size:1.1rem;background:linear-gradient(120deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.logo-tag{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--tx2);letter-spacing:3px;margin-top:1px}
+.hbtns{margin-left:auto;display:flex;gap:8px;align-items:center}
+.hbtn{font-family:'Share Tech Mono',monospace;font-size:.68rem;padding:4px 12px;border:1px solid var(--b2);border-radius:5px;background:transparent;color:var(--blue);cursor:pointer;transition:.15s}
+.hbtn:hover{background:rgba(0,180,255,.1)}
+.hbtn.red{border-color:var(--red);color:var(--red)}
+.hbtn.red:hover{background:rgba(255,60,90,.1)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s infinite;margin-left:6px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.config{display:flex;align-items:flex-end;gap:10px;padding:10px 24px;border-bottom:1px solid var(--b1);background:var(--bg2);position:relative;z-index:10;flex-wrap:wrap}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--tx2)}
+.fg input{background:rgba(0,0,0,.5);border:1px solid var(--b2);color:var(--tx);font-family:'Share Tech Mono',monospace;font-size:.85rem;padding:7px 11px;border-radius:7px;outline:none;transition:.2s}
+.fg input:focus{border-color:var(--green)}
+#ipIn{width:160px}#p1,#p2{width:80px}#thIn{width:72px}
+.ps{font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:4px 9px;border:1px solid var(--b2);border-radius:5px;background:transparent;color:var(--blue);cursor:pointer;transition:.15s}
+.ps:hover{background:rgba(0,180,255,.1)}
+#scanBtn{padding:8px 20px;font-family:'Orbitron',monospace;font-size:.68rem;letter-spacing:2px;background:linear-gradient(135deg,#004d2a,#003318);border:1px solid var(--green);color:var(--green);border-radius:7px;cursor:pointer;transition:.2s}
+#scanBtn:hover{box-shadow:0 0 16px rgba(0,255,136,.2)}
+#scanBtn.stop{background:linear-gradient(135deg,#4d0015,#33000e);border-color:var(--red);color:var(--red)}
+.prog-wrap{padding:6px 24px;background:var(--bg);border-bottom:1px solid var(--b1);position:relative;z-index:10}
+.prog-meta{display:flex;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--tx2);margin-bottom:4px}
+.prog-bar{height:5px;background:rgba(0,0,0,.5);border-radius:20px;overflow:hidden}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),#00ffbb);border-radius:20px;transition:width .2s;box-shadow:0 0 6px rgba(0,255,136,.4)}
+.arena{display:grid;grid-template-columns:1fr 340px;height:calc(100vh - 168px);position:relative;z-index:5}
+.tbl-wrap{border-right:1px solid var(--b1);overflow:hidden;display:flex;flex-direction:column}
+.tbl-head{display:flex;align-items:center;padding:6px 16px;border-bottom:1px solid var(--b1);background:var(--bg2);gap:12px}
+.tbl-title{font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:2px;color:var(--green)}
+.chips{display:flex;gap:8px;margin-left:auto}
+.chip{font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:2px 8px;border-radius:4px;background:rgba(0,0,0,.4);border:1px solid var(--b1)}
+.chip.c{border-color:var(--red);color:var(--red)}.chip.h{border-color:var(--orange);color:var(--orange)}.chip.o{border-color:var(--green);color:var(--green)}
+.tbl-inner{flex:1;overflow-y:auto}
+table{width:100%;border-collapse:collapse}
+th{font-family:'Orbitron',monospace;font-size:.55rem;letter-spacing:2px;color:var(--tx2);padding:7px 12px;border-bottom:1px solid var(--b1);text-align:left;position:sticky;top:0;background:var(--bg3)}
+td{font-family:'Share Tech Mono',monospace;font-size:.78rem;padding:9px 12px;border-bottom:1px solid rgba(0,255,136,.05);vertical-align:middle}
+.pn{color:var(--blue);font-weight:700}
+.rc{color:var(--red);background:rgba(255,60,90,.1);padding:2px 7px;border-radius:4px;font-size:.68rem;animation:pc 1.2s ease-in-out infinite}
+.rh{color:var(--orange);background:rgba(255,140,66,.1);padding:2px 7px;border-radius:4px;font-size:.68rem}
+.rm{color:var(--yellow);background:rgba(255,209,102,.08);padding:2px 7px;border-radius:4px;font-size:.68rem}
+.rl{color:var(--green);background:rgba(0,255,136,.07);padding:2px 7px;border-radius:4px;font-size:.68rem}
+@keyframes pc{0%,100%{box-shadow:0 0 0 0 rgba(255,60,90,.5)}50%{box-shadow:0 0 8px 3px rgba(255,60,90,.25)}}
+.cve{font-size:.6rem;color:var(--purple);display:block;margin-top:1px}
+tr.cr td{background:rgba(255,60,90,.04)}
+@keyframes ri{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.nr td{animation:ri .25s ease}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;opacity:.25}
+.empty-i{font-size:3rem}.empty-t{font-family:'Orbitron',monospace;font-size:.68rem;letter-spacing:3px;color:var(--tx2)}
+.graph-wrap{display:flex;flex-direction:column;background:var(--bg3)}
+.graph-head{padding:7px 14px;border-bottom:1px solid var(--b1);font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:2px;color:var(--blue)}
+#nc{flex:1;width:100%}
+/* TERMINAL */
+.term{position:fixed;bottom:0;right:0;width:420px;background:#010a0f;border:1px solid rgba(0,255,136,.2);border-bottom:none;border-radius:10px 10px 0 0;z-index:200;transform:translateY(calc(100% - 34px));transition:.3s}
+.term.open{transform:translateY(0)}
+.term-hdr{display:flex;align-items:center;padding:6px 12px;border-bottom:1px solid rgba(0,255,136,.15);cursor:pointer;gap:8px}
+.term-title{font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:2px;color:var(--green)}
+.term-dots{display:flex;gap:4px;margin-left:auto}.term-dot{width:8px;height:8px;border-radius:50%}
+.term-body{height:200px;overflow-y:auto;padding:8px 12px;font-family:'Share Tech Mono',monospace;font-size:.72rem;line-height:1.6}
+.tl{color:#4a7a5a;padding:1px 0}.tl.f{color:var(--green)}.tl.d{color:var(--blue)}.tl.e{color:var(--red)}.tl.c{color:var(--red);font-weight:700}
+/* HISTORY MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,5,10,.85);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.overlay.show{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;width:900px;max-width:96vw;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 0 60px rgba(0,255,136,.08)}
+.mhdr{display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid var(--b1)}
+.mtitle{font-family:'Orbitron',monospace;font-size:.75rem;letter-spacing:2px;color:var(--green)}
+.mclose{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:.75rem;color:var(--red);cursor:pointer;border:1px solid rgba(255,60,90,.3);padding:3px 10px;border-radius:5px}
+.mclose:hover{background:rgba(255,60,90,.1)}
+.mbody{flex:1;overflow-y:auto;padding:16px 20px}
+#htable{width:100%;border-collapse:collapse}
+#htable th{font-family:'Orbitron',monospace;font-size:.55rem;letter-spacing:2px;color:var(--tx2);padding:7px 10px;border-bottom:1px solid var(--b1);text-align:left}
+#htable td{font-family:'Share Tech Mono',monospace;font-size:.78rem;padding:9px 10px;border-bottom:1px solid rgba(0,255,136,.05);color:var(--tx)}
+#htable tr:hover td{background:rgba(0,255,136,.04);cursor:pointer}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--b1);border-radius:10px}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="logo">NEXUS VANGUARD <span style="font-size:.75rem;opacity:.5">V7.0</span></div><div class="logo-tag">ENTERPRISE SECURITY PLATFORM</div></div>
+  <div class="hbtns">
+    <button class="hbtn" onclick="openHistory()">📋 History</button>
+    <button class="hbtn" id="pdfBtn" onclick="exportPDF()" disabled>📄 Export PDF</button>
+    <a href="/logout"><button class="hbtn red">⏻ Logout</button></a>
+    <div class="dot"></div>
+  </div>
+</header>
+<div class="config">
+  <div class="fg"><label>Target IP</label><input id="ipIn" type="text" placeholder="192.168.1.1" value="127.0.0.1"></div>
+  <div class="fg"><label>Start</label><input id="p1" type="number" value="1" min="1" max="65535"></div>
+  <div class="fg"><label>End</label><input id="p2" type="number" value="1024" min="1" max="65535"></div>
+  <div class="fg"><label>Threads</label><input id="thIn" type="number" value="100" min="1" max="100"></div>
+  <div class="fg" style="gap:4px"><label>Profiles</label><div style="display:flex;gap:5px"><button class="ps" onclick="pset(1,1024,80)">Std</button><button class="ps" onclick="pset(1,65535,100)">Full</button><button class="ps" onclick="pset(1,1023,60)">Known</button><button class="ps" onclick="pset(8000,9999,80)">Web</button><button class="ps" onclick="pset(3306,3399,50)">DB</button></div></div>
+  <button id="scanBtn" onclick="toggleScan()">⚡ START SCAN</button>
+</div>
+<div class="prog-wrap">
+  <div class="prog-meta"><span id="progLbl">Ready — awaiting target</span><span id="progR">0/0 | 0 p/s | 0s</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf"></div></div>
+</div>
+<div class="arena">
+  <div class="tbl-wrap">
+    <div class="tbl-head">
+      <span class="tbl-title">OPEN PORTS</span>
+      <div class="chips"><span class="chip o">OPEN:<b id="cO">0</b></span><span class="chip h">HIGH:<b id="cH">0</b></span><span class="chip c">CRIT:<b id="cC">0</b></span></div>
+    </div>
+    <div class="tbl-inner">
+      <div id="es" class="empty"><div class="empty-i" id="esIcon">🛡️</div><div class="empty-t" id="esTxt">AWAITING SCAN</div></div>
+      <table id="pt" style="display:none"><thead><tr><th>PORT</th><th>SERVICE</th><th>RISK</th><th>BANNER / CVE</th></tr></thead><tbody id="tb"></tbody></table>
+    </div>
+  </div>
+  <div class="graph-wrap"><div class="graph-head">⬡ TOPOLOGY MAP</div><canvas id="nc"></canvas></div>
+</div>
+
+<!-- Terminal -->
+<div class="term" id="term">
+  <div class="term-hdr" onclick="toggleTerm()">
+    <span class="term-title">▶ TERMINAL CONSOLE</span>
+    <div class="term-dots"><div class="term-dot" style="background:#ff5f56"></div><div class="term-dot" style="background:#ffbd2e"></div><div class="term-dot" style="background:#27c93f"></div></div>
+  </div>
+  <div class="term-body" id="tb2"></div>
+</div>
+
+<!-- History Modal -->
+<div class="overlay" id="hist">
+  <div class="modal">
+    <div class="mhdr"><span class="mtitle">📋 SCAN HISTORY</span><span class="mclose" onclick="closeHistory()">✕ CLOSE</span></div>
+    <div class="mbody"><table id="htable"><thead><tr><th>#</th><th>TARGET</th><th>PORTS SCANNED</th><th>OPEN</th><th>CRITICAL</th><th>ELAPSED</th><th>DATE</th></tr></thead><tbody id="htb"></tbody></table></div>
+  </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+// State
+let scanning=false,counts={o:0,h:0,c:0},gTarget='',gNodes=[],animId=null,gAngle=0;
+const canvas=document.getElementById('nc'),ctx=canvas.getContext('2d');
+
+// Resize canvas
+function rsz(){const w=canvas.parentElement;canvas.width=w.clientWidth;canvas.height=w.clientHeight-32}
+rsz();window.addEventListener('resize',rsz);
+
+// Socket
+const socket=io();
+socket.on('connect',()=>tlog('Connected to Nexus Vanguard V7.0','d'));
+socket.on('scan_started',d=>{gTarget=d.ip;gNodes=[];tlog(`Scan started → ${d.ip} | ${d.total} ports`,'d');startGraph()});
+socket.on('scan_progress',d=>{
+  const pct=Math.round(d.done/d.total*100);
+  document.getElementById('pf').style.width=pct+'%';
+  document.getElementById('progR').textContent=`${d.done}/${d.total} | ${d.speed} p/s | ${d.elapsed}s`;
+});
+socket.on('port_found',d=>{
+  addRow(d);addGNode(d);counts.o++;
+  if(d.risk==='CRITICAL'){counts.c++;tlog(`CRITICAL: Port ${d.port} — ${d.cve||d.service}`,'c')}
+  else if(d.risk==='HIGH'){counts.h++;tlog(`HIGH: Port ${d.port} — ${d.service}`,'f')}
+  else tlog(`OPEN: Port ${d.port} (${d.service})`,'f');
+  document.getElementById('cO').textContent=counts.o;
+  document.getElementById('cH').textContent=counts.h;
+  document.getElementById('cC').textContent=counts.c;
+});
+socket.on('scan_done',d=>{
+  scanning=false;
+  const b=document.getElementById('scanBtn');b.textContent='⚡ START SCAN';b.classList.remove('stop');
+  document.getElementById('pf').style.width='100%';
+  document.getElementById('progLbl').textContent=`Complete — ${counts.o} open ports in ${d.elapsed}s`;
+  if(counts.o===0){document.getElementById('esIcon').textContent='🔍';document.getElementById('esTxt').textContent='NO OPEN PORTS FOUND';document.getElementById('es').style.display='flex';}
+  document.getElementById('pdfBtn').disabled=false;
+  tlog(`Scan complete — ${counts.o} open ports | ${d.elapsed}s`,'d');
+});
+socket.on('scan_cancelled',()=>{scanning=false;const b=document.getElementById('scanBtn');b.textContent='⚡ START SCAN';b.classList.remove('stop');tlog('Scan cancelled','e')});
+socket.on('scan_error',d=>{alert(d.msg);tlog('ERROR: '+d.msg,'e')});
+
+// Controls
+function pset(s,e,t){document.getElementById('p1').value=s;document.getElementById('p2').value=e;document.getElementById('thIn').value=t}
+function toggleScan(){
+  if(scanning){socket.emit('cancel_scan',{});return}
+  const ip=document.getElementById('ipIn').value.trim();
+  const s=+document.getElementById('p1').value,e=+document.getElementById('p2').value,t=+document.getElementById('thIn').value;
+  if(!ip){alert('Enter target IP');return}
+  counts={o:0,h:0,c:0};
+  ['cO','cH','cC'].forEach(id=>document.getElementById(id).textContent='0');
+  document.getElementById('tb').innerHTML='';
+  document.getElementById('es').style.display='flex';
+  document.getElementById('pt').style.display='none';
+  document.getElementById('pf').style.width='0%';
+  document.getElementById('pdfBtn').disabled=true;
+  scanning=true;
+  const b=document.getElementById('scanBtn');b.textContent='⛔ STOP';b.classList.add('stop');
+  socket.emit('start_scan',{ip,start:s,end:e,threads:t});
+}
+
+// Table
+function rCls(r){return r==='CRITICAL'?'rc':r==='HIGH'?'rh':r==='MEDIUM'?'rm':'rl'}
+function addRow(d){
+  document.getElementById('es').style.display='none';
+  document.getElementById('pt').style.display='table';
+  const tb=document.getElementById('tb'),tr=document.createElement('tr');
+  tr.className='nr'+(d.risk==='CRITICAL'?' cr':'');
+  tr.innerHTML=`<td class="pn">${d.port}</td><td>${d.service}</td><td><span class="${rCls(d.risk)}">${d.risk}</span></td><td>${d.banner}${d.cve?`<span class="cve">⚠ ${d.cve} — ${d.cve_desc||''}</span>`:''}</td>`;
+  tb.appendChild(tr);tb.parentElement.parentElement.scrollTop=9999;
+}
+
+// Terminal
+function tlog(msg,cls=''){
+  const p=document.getElementById('tb2'),d=document.createElement('div');
+  d.className='tl '+(cls||'');
+  d.textContent=`[${new Date().toLocaleTimeString()}] ${msg}`;
+  p.appendChild(d);p.scrollTop=p.scrollHeight;
+}
+function toggleTerm(){document.getElementById('term').classList.toggle('open')}
+
+// History
+async function openHistory(){
+  const res=await fetch('/api/history');const data=await res.json();
+  const tb=document.getElementById('htb');tb.innerHTML='';
+  data.forEach(r=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.id}</td><td>${r.target_ip}</td><td>${r.start_port}–${r.end_port}</td><td style="color:var(--green)">${r.open_count}</td><td style="color:var(--red)">${r.critical_count}</td><td>${r.elapsed}s</td><td>${r.scanned_at}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('hist').classList.add('show');
+}
+function closeHistory(){document.getElementById('hist').classList.remove('show')}
+
+// PDF Export
+function exportPDF(){
+  const {jsPDF}=window.jspdf,doc=new jsPDF();
+  doc.setFontSize(16);doc.setTextColor(0,80,40);
+  doc.text('Nexus Vanguard V7.0 — Scan Report',14,18);
+  doc.setFontSize(10);doc.setTextColor(60,60,60);
+  doc.text(`Target: ${gTarget}  |  Open: ${counts.o}  |  Critical: ${counts.c}  |  ${new Date().toLocaleString()}`,14,28);
+  const rows=[];
+  document.querySelectorAll('#tb tr').forEach(tr=>{
+    const c=tr.querySelectorAll('td');
+    rows.push([c[0]?.textContent,c[1]?.textContent,c[2]?.textContent,(c[3]?.textContent||'').substring(0,70)]);
+  });
+  doc.autoTable({head:[['Port','Service','Risk','Banner/CVE']],body:rows,startY:36,styles:{fontSize:8},headStyles:{fillColor:[0,60,30]}});
+  doc.save(`nexus_scan_${gTarget}_${Date.now()}.pdf`);
+}
+
+// Node Graph
+function nColor(r){return r==='CRITICAL'?'#ff3c5a':r==='HIGH'?'#ff8c42':r==='MEDIUM'?'#ffd166':'#00ff88'}
+function addGNode(d){
+  const a=(gNodes.length*137.508)*Math.PI/180,r=80+(gNodes.length%3)*26;
+  gNodes.push({port:d.port,service:d.service,risk:d.risk,a,r,op:0});
+}
+function drawGraph(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const cx=canvas.width/2,cy=canvas.height/2;
+  gAngle+=0.008;
+  gNodes.forEach(n=>{
+    if(n.op<1)n.op=Math.min(1,n.op+0.04);
+    const nx=cx+n.r*Math.cos(n.a),ny=cy+n.r*Math.sin(n.a),col=nColor(n.risk);
+    ctx.globalAlpha=n.op;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(nx,ny);ctx.strokeStyle=col+'40';ctx.lineWidth=1;ctx.stroke();
+    ctx.beginPath();ctx.arc(nx,ny,16,0,Math.PI*2);ctx.fillStyle=col+'18';ctx.fill();ctx.strokeStyle=col;ctx.lineWidth=1.5;ctx.stroke();
+    ctx.fillStyle=col;ctx.font='bold 9px Share Tech Mono';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n.port,nx,ny);
+    ctx.fillStyle='#888';ctx.font='7px Share Tech Mono';ctx.fillText((n.service||'').substring(0,7),nx,ny+22);
+  });
+  ctx.globalAlpha=1;
+  const p=Math.sin(gAngle*3)*4;
+  ctx.beginPath();ctx.arc(cx,cy,46+p,0,Math.PI*2);ctx.strokeStyle='rgba(0,180,255,.1)';ctx.lineWidth=1;ctx.stroke();
+  ctx.beginPath();ctx.arc(cx,cy,gAngle%(Math.PI*2),gAngle%(Math.PI*2)+1.2,false);
+  ctx.beginPath();ctx.arc(cx,cy,30,gAngle,gAngle+1.2);ctx.strokeStyle='rgba(0,180,255,.6)';ctx.lineWidth=2;ctx.stroke();
+  ctx.beginPath();ctx.arc(cx,cy,34,0,Math.PI*2);ctx.fillStyle='rgba(0,15,35,.97)';ctx.fill();ctx.strokeStyle='#00b4ff';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='#00b4ff';ctx.font='bold 7.5px Share Tech Mono';ctx.textAlign='center';ctx.textBaseline='middle';
+  const ipLabel=(gTarget||'TARGET').length>11?(gTarget||'TARGET').substring(0,11)+'…':(gTarget||'TARGET');
+  ctx.fillText(ipLabel,cx,cy-6);ctx.fillStyle='rgba(0,180,255,.45)';ctx.font='6.5px Share Tech Mono';ctx.fillText('[ HOST ]',cx,cy+8);
+  animId=requestAnimationFrame(drawGraph);
+}
+function startGraph(){if(animId)cancelAnimationFrame(animId);drawGraph()}
+startGraph();
+</script>
+</body>
+</html>

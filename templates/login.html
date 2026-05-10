@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus Vanguard — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#020c14;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;overflow:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,136,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.card{position:relative;z-index:1;width:380px;background:rgba(5,20,35,.92);border:1px solid rgba(0,255,136,.2);border-radius:16px;padding:40px 36px;box-shadow:0 0 60px rgba(0,255,136,.08),0 0 120px rgba(0,180,255,.05)}
+.logo{font-family:'Orbitron',monospace;font-weight:900;font-size:1.4rem;background:linear-gradient(120deg,#00ff88,#00b4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:4px}
+.sub{text-align:center;font-size:.65rem;color:#5a8099;letter-spacing:3px;margin-bottom:32px}
+label{display:block;font-size:.65rem;letter-spacing:2px;color:#5a8099;text-transform:uppercase;margin-bottom:6px}
+input{width:100%;background:rgba(0,0,0,.5);border:1px solid rgba(0,180,255,.2);color:#c4e0f0;font-family:'Share Tech Mono',monospace;font-size:.9rem;padding:11px 14px;border-radius:8px;outline:none;margin-bottom:18px;transition:.2s}
+input:focus{border-color:#00ff88;box-shadow:0 0 0 2px rgba(0,255,136,.1)}
+.btn{width:100%;padding:13px;background:linear-gradient(135deg,#004d2a,#003318);border:1px solid #00ff88;color:#00ff88;font-family:'Orbitron',monospace;font-size:.75rem;letter-spacing:2px;border-radius:9px;cursor:pointer;transition:.2s;margin-top:4px}
+.btn:hover{background:linear-gradient(135deg,#007a42,#004d2a);box-shadow:0 0 20px rgba(0,255,136,.25)}
+.error{background:rgba(255,60,90,.1);border:1px solid rgba(255,60,90,.4);border-radius:7px;color:#ff3c5a;font-size:.75rem;padding:10px 14px;margin-bottom:18px;text-align:center}
+.hint{text-align:center;font-size:.65rem;color:rgba(90,128,153,.5);margin-top:18px}
+.scan-line{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,transparent);animation:scan 3s linear infinite;border-radius:16px 16px 0 0}
+@keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="scan-line"></div>
+  <div class="logo">NEXUS VANGUARD</div>
+  <div class="sub">ENTERPRISE EDITION V7.0 — SECURE ACCESS</div>
+  {% if error %}<div class="error">⚠ {{ error }}</div>{% endif %}
+  <form method="POST">
+    <label>Username</label>
+    <input type="text" name="username" placeholder="admin" autocomplete="username" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+    <button class="btn" type="submit">⚡ AUTHENTICATE</button>
+  </form>
+  <div class="hint">Authorized personnel only • All access is logged</div>
+</div>
+</body>
+</html>
